@@ -1,0 +1,20 @@
+#You first import the necessary libraries
+import urllib.request, urllib.parse, urllib.error
+import json
+
+#you can use an input statement or you just paste the url as a string
+url = input('Enter the url: ')
+handle = urllib.request.urlopen(url)
+data = handle.read().decode()
+
+print('retrieving',len(data), 'chars')
+
+info = json.loads(data)
+print(info)
+
+summ = 0
+#I could have use pneumonic variables but I don't want to confuse you 
+for b in info['comments']:
+	#print(b['count'])
+	summ += int(b['count'])
+print(summ)
